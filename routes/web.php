@@ -36,8 +36,20 @@ Route::prefix('/category')->group(function(){
 });
 
 //Number 3
-Route::get('/news/{news?}', function ($news=' ') {
-    return 'Halaman News '.$news;
+Route::prefix('news')->group(function () {
+    Route::get(
+        '/{name?}',
+        function (string $name = 'catalog') {
+            return redirect('https://www.educastudio.com/news');
+        }
+    );
+
+    Route::get(
+        '/{name?}',
+        function (string $name = 'covid19') {
+            return redirect('https://www.educastudio.com/news/educa-studio-berbagi-untuk-warga-sekitar- terdampak-covid-19');
+        }
+    );
 });
 
 
